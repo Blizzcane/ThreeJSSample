@@ -9,7 +9,6 @@
 </head>
 
 <body>
-    Hello world
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/102/three.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.2/TweenMax.min.js"></script>
     <script>
@@ -21,13 +20,19 @@
             0.1,
             1000
         );
-        
+
         var renderer = new THREE.WebGLRenderer({ antialias: true });
 
         renderer.setClearColor("#e5e5e5");
         renderer.setSize(window.innerWidth, window.innerHeight);
 
         document.body.appendChild(renderer.domElement);
+
+        window.addEventListener('resize', () => {
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectMatrix();
+        });
 
     </script>
 </body>
